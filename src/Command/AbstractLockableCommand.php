@@ -25,6 +25,7 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
     public const LOCKABLE_COMMAND_REFRESH_EVENT_NAME = 'lockable_command_refresh_event';
 
     protected const COMMAND_IS_LOCKED_ERROR_CODE = 100;
+    protected const DEFAULT_TTL = 60;
 
     /** @var LockInterface */
     protected $lock;
@@ -34,7 +35,7 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
      */
     public function getLockTtl(): int
     {
-        return 60;
+        return static::DEFAULT_TTL;
     }
 
     /**
@@ -51,7 +52,7 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
 
         try {
             if (!$this->lock->acquire()) {
-                $this->logger->warning(sprintf(
+                $this->warning(sprintf(
                     'The command "%s" is already running',
                     $name
                 ));
@@ -59,7 +60,7 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
                 return static::COMMAND_IS_LOCKED_ERROR_CODE;
             }
         } catch (LockExpiredException | LockConflictedException | LockAcquiringException $e) {
-            $this->logException($e, get_defined_vars());
+            $this->error($e, get_defined_vars());
 
             return static::COMMAND_IS_LOCKED_ERROR_CODE;
         }
@@ -83,7 +84,7 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
             function (): void {
                 $this->lock->refresh();
 
-                $this->logger->debug(sprintf(
+                $this->debug(sprintf(
                     'Command "%s" received lock refresh event',
                     $this->getName()
                 ));

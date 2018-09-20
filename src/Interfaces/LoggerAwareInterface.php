@@ -5,12 +5,12 @@ namespace Bacart\SymfonyCommon\Interfaces;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 
-interface LoggerAwareInterface
+interface LoggerAwareInterface extends LoggerInterface
 {
     /**
-     * @param LoggerInterface $logger
+     * @param LoggerInterface|null $logger
      */
-    public function setLogger(LoggerInterface $logger): void;
+    public function setLogger(LoggerInterface $logger = null): void;
 
     /**
      * @param \Throwable $exception
