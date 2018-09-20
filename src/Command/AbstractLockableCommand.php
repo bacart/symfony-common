@@ -1,0 +1,93 @@
+<?php
+
+namespace Bacart\SymfonyCommon\Command;
+
+use Bacart\SymfonyCommon\Interfaces\EventDispatcherAwareInterface;
+use Bacart\SymfonyCommon\Interfaces\LockFactoryAwareInterface;
+use Bacart\SymfonyCommon\Interfaces\LoggerAwareInterface;
+use Bacart\SymfonyCommon\Traits\EventDispatcherAwareTrait;
+use Bacart\SymfonyCommon\Traits\LockFactoryAwareTrait;
+use Bacart\SymfonyCommon\Traits\LoggerAwareTrait;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Lock\Exception\LockAcquiringException;
+use Symfony\Component\Lock\Exception\LockConflictedException;
+use Symfony\Component\Lock\Exception\LockExpiredException;
+use Symfony\Component\Lock\LockInterface;
+
+abstract class AbstractLockableCommand extends Command implements LockableCommandInterface, EventDispatcherAwareInterface, LockFactoryAwareInterface, LoggerAwareInterface
+{
+    use EventDispatcherAwareTrait;
+    use LockFactoryAwareTrait;
+    use LoggerAwareTrait;
+
+    public const LOCKABLE_COMMAND_REFRESH_EVENT_NAME = 'lockable_command_refresh_event';
+
+    protected const COMMAND_IS_LOCKED_ERROR_CODE = 100;
+
+    /** @var LockInterface */
+    protected $lock;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLockTtl(): int
+    {
+        return 60;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function run(InputInterface $input, OutputInterface $output): int
+    {
+        $name = $this->getName();
+
+        $this->lock = $this->lockFactory->createLock(
+            sprintf('command_lock|%s', $name),
+            $this->getLockTtl()
+        );
+
+        try {
+            if (!$this->lock->acquire()) {
+                $this->logger->warning(sprintf(
+                    'The command "%s" is already running',
+                    $name
+                ));
+
+                return static::COMMAND_IS_LOCKED_ERROR_CODE;
+            }
+        } catch (LockExpiredException | LockConflictedException | LockAcquiringException $e) {
+            $this->logException($e, get_defined_vars());
+
+            return static::COMMAND_IS_LOCKED_ERROR_CODE;
+        }
+
+        try {
+            return parent::run($input, $output);
+        } finally {
+            $this->lock->release();
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function initialize(InputInterface $input, OutputInterface $output): void
+    {
+        parent::initialize($input, $output);
+
+        $this->dispatcher->addListener(
+            static::LOCKABLE_COMMAND_REFRESH_EVENT_NAME,
+            function (): void {
+                $this->lock->refresh();
+
+                $this->logger->debug(sprintf(
+                    'Command "%s" received lock refresh event',
+                    $this->getName()
+                ));
+            }
+        );
+    }
+}

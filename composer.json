@@ -1,0 +1,40 @@
+{
+    "name": "bacart/symfony-common",
+    "description": "Symfony common utils",
+    "type": "library",
+    "keywords": [
+        "php",
+        "symfony",
+        "bacart"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "doctrine/mongodb-odm": "^1.2",
+        "doctrine/orm": "^2.6",
+        "phpstan/phpstan": "^0.10.3",
+        "symfony/framework-bundle": "^4.1",
+        "symfony/lock": "^4.1"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Bacart\\SymfonyCommon\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alex Bacart",
+            "email": "alex@bacart.net"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.2-dev"
+        }
+    }
+}
