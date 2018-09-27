@@ -77,12 +77,16 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
         $this->dispatcher->addListener(
             LockableCommandInterface::LOCKABLE_COMMAND_REFRESH_EVENT_NAME,
             function (): void {
-                $this->lock->refresh();
-
                 $this->debug(sprintf(
                     'Command "%s" received lock refresh event',
                     $this->getName()
                 ));
+                
+                try {
+                    $this->lock->refresh();
+                } catch (LockConflictedException | LockAcquiringException $e) {
+                    $this->error($e);
+                }
             }
         );
     }
