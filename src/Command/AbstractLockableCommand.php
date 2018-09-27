@@ -22,11 +22,6 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
     use LockFactoryAwareTrait;
     use LoggerAwareTrait;
 
-    public const LOCKABLE_COMMAND_REFRESH_EVENT_NAME = 'lockable_command_refresh_event';
-
-    protected const COMMAND_IS_LOCKED_ERROR_CODE = 100;
-    protected const DEFAULT_TTL = 60;
-
     /** @var LockInterface */
     protected $lock;
 
@@ -35,7 +30,7 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
      */
     public function getLockTtl(): int
     {
-        return static::DEFAULT_TTL;
+        return LockableCommandInterface::DEFAULT_TTL;
     }
 
     /**
@@ -57,12 +52,12 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
                     $name
                 ));
 
-                return static::COMMAND_IS_LOCKED_ERROR_CODE;
+                return LockableCommandInterface::COMMAND_IS_LOCKED_ERROR_CODE;
             }
         } catch (LockExpiredException | LockConflictedException | LockAcquiringException $e) {
             $this->error($e, get_defined_vars());
 
-            return static::COMMAND_IS_LOCKED_ERROR_CODE;
+            return LockableCommandInterface::COMMAND_IS_LOCKED_ERROR_CODE;
         }
 
         try {
@@ -80,7 +75,7 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
         parent::initialize($input, $output);
 
         $this->dispatcher->addListener(
-            static::LOCKABLE_COMMAND_REFRESH_EVENT_NAME,
+            LockableCommandInterface::LOCKABLE_COMMAND_REFRESH_EVENT_NAME,
             function (): void {
                 $this->lock->refresh();
 
