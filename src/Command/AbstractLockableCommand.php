@@ -2,12 +2,12 @@
 
 namespace Bacart\SymfonyCommon\Command;
 
-use Bacart\SymfonyCommon\Interfaces\EventDispatcherAwareInterface;
-use Bacart\SymfonyCommon\Interfaces\LockFactoryAwareInterface;
-use Bacart\SymfonyCommon\Interfaces\LoggerAwareInterface;
-use Bacart\SymfonyCommon\Traits\EventDispatcherAwareTrait;
-use Bacart\SymfonyCommon\Traits\LockFactoryAwareTrait;
-use Bacart\SymfonyCommon\Traits\LoggerAwareTrait;
+use Bacart\SymfonyCommon\Aware\Interfaces\EventDispatcherAwareInterface;
+use Bacart\SymfonyCommon\Aware\Interfaces\LockFactoryAwareInterface;
+use Bacart\SymfonyCommon\Aware\Interfaces\LoggerAwareInterface;
+use Bacart\SymfonyCommon\Aware\Traits\EventDispatcherAwareTrait;
+use Bacart\SymfonyCommon\Aware\Traits\LockFactoryAwareTrait;
+use Bacart\SymfonyCommon\Aware\Traits\LoggerAwareTrait;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -81,7 +81,7 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
                     'Command "%s" received lock refresh event',
                     $this->getName()
                 ));
-                
+
                 try {
                     $this->lock->refresh();
                 } catch (LockConflictedException | LockAcquiringException $e) {

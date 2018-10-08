@@ -1,12 +1,13 @@
 <?php
 
-namespace Bacart\SymfonyCommon\Traits;
+namespace Bacart\SymfonyCommon\Aware\Traits;
 
+use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 trait ContainerAwareTrait
 {
-    /** @var ContainerInterface */
+    /** @var Container */
     protected $container;
 
     /**

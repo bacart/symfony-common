@@ -1,13 +1,14 @@
 <?php
 
-namespace Bacart\SymfonyCommon\Traits;
+namespace Bacart\SymfonyCommon\Aware\Traits;
 
+use Psr\Log\AbstractLogger;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 
 trait LoggerAwareTrait
 {
-    /** @var LoggerInterface|null */
+    /** @var AbstractLogger|null */
     protected $logger;
 
     /**

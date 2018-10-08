@@ -1,6 +1,6 @@
 <?php
 
-namespace Bacart\SymfonyCommon\Traits;
+namespace Bacart\SymfonyCommon\Aware\Traits;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 trait EntityManagerAwareTrait
 {
     /**
-     * @var EntityManagerInterface|EntityManager
+     * @var EntityManager
      */
     protected $em;
 

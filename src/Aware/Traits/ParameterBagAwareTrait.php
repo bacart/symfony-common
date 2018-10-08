@@ -1,12 +1,13 @@
 <?php
 
-namespace Bacart\SymfonyCommon\Traits;
+namespace Bacart\SymfonyCommon\Aware\Traits;
 
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 trait ParameterBagAwareTrait
 {
-    /** @var ParameterBagInterface */
+    /** @var ParameterBag */
     protected $parameterBag;
 
     /**

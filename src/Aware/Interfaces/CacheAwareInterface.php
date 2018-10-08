@@ -1,6 +1,6 @@
 <?php
 
-namespace Bacart\SymfonyCommon\Interfaces;
+namespace Bacart\SymfonyCommon\Aware\Interfaces;
 
 use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\Adapter\TagAwareAdapterInterface;

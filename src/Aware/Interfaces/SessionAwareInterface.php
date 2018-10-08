@@ -1,6 +1,6 @@
 <?php
 
-namespace Bacart\SymfonyCommon\Interfaces;
+namespace Bacart\SymfonyCommon\Aware\Interfaces;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 

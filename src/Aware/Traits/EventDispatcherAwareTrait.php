@@ -1,12 +1,13 @@
 <?php
 
-namespace Bacart\SymfonyCommon\Traits;
+namespace Bacart\SymfonyCommon\Aware\Traits;
 
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 trait EventDispatcherAwareTrait
 {
-    /** @var EventDispatcherInterface */
+    /** @var EventDispatcher */
     protected $dispatcher;
 
     /**

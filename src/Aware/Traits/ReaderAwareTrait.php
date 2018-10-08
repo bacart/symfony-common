@@ -1,6 +1,6 @@
 <?php
 
-namespace Bacart\SymfonyCommon\Traits;
+namespace Bacart\SymfonyCommon\Aware\Traits;
 
 use Doctrine\Common\Annotations\Reader;
 

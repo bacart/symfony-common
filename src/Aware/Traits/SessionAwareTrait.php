@@ -1,13 +1,13 @@
 <?php
 
-namespace Bacart\SymfonyCommon\Traits;
+namespace Bacart\SymfonyCommon\Aware\Traits;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 trait SessionAwareTrait
 {
-    /** @var SessionInterface|Session|null */
+    /** @var Session|null */
     protected $session;
 
     /**
