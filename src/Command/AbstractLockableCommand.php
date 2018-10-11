@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Lock\Exception\LockAcquiringException;
 use Symfony\Component\Lock\Exception\LockConflictedException;
 use Symfony\Component\Lock\Exception\LockExpiredException;
-use Symfony\Component\Lock\LockInterface;
+use Symfony\Component\Lock\Lock;
 
 abstract class AbstractLockableCommand extends Command implements LockableCommandInterface, EventDispatcherAwareInterface, LockFactoryAwareInterface, LoggerAwareInterface
 {
@@ -22,7 +22,7 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
     use LockFactoryAwareTrait;
     use LoggerAwareTrait;
 
-    /** @var LockInterface */
+    /** @var Lock */
     protected $lock;
 
     /**

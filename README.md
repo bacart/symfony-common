@@ -41,9 +41,9 @@ class SomeCommand extends AbstractLockableCommand
 From now on your command will be able to run only once a time. You can also override a `getLockTtl()` method to set a lock lifetime in seconds (defaults to 60).
 If your command execution is too complex and may take more than lock lifetime you can extend it with `EventDispatcher`:
 ```php
-use Bacart\SymfonyCommon\Command\AbstractLockableCommand;
 use Bacart\SymfonyCommon\Aware\Interfaces\EventDispatcherAwareInterface;
 use Bacart\SymfonyCommon\Aware\Traits\EventDispatcherAwareTrait;
+use Bacart\SymfonyCommon\Command\AbstractLockableCommand;
 
 class SomeService implements EventDispatcherAwareInterface
 {
