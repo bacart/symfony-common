@@ -15,7 +15,7 @@
     "require-dev": {
         "doctrine/mongodb-odm": "^1.2",
         "doctrine/orm": "^2.6",
-        "phpstan/phpstan": "^0.10.3",
+        "phpstan/phpstan": "^0.10",
         "symfony/framework-bundle": "^4.1",
         "symfony/lock": "^4.1"
     },

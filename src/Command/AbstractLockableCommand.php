@@ -9,7 +9,9 @@ use Bacart\SymfonyCommon\Aware\Traits\EventDispatcherAwareTrait;
 use Bacart\SymfonyCommon\Aware\Traits\LockFactoryAwareTrait;
 use Bacart\SymfonyCommon\Aware\Traits\LoggerAwareTrait;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Lock\Exception\LockAcquiringException;
 use Symfony\Component\Lock\Exception\LockConflictedException;
@@ -28,6 +30,22 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
     /**
      * {@inheritdoc}
      */
+    public function getDisableLockCommandOptionName(): string
+    {
+        return LockableCommandInterface::DISABLE_LOCK_COMMAND_OPTION_NAME;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCommandIsLockedErrorCode(): int
+    {
+        return LockableCommandInterface::COMMAND_IS_LOCKED_ERROR_CODE;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getLockTtl(): int
     {
         return LockableCommandInterface::DEFAULT_TTL;
@@ -38,6 +56,10 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
      */
     public function run(InputInterface $input, OutputInterface $output): int
     {
+        if ($input->getOption($this->getDisableLockCommandOptionName())) {
+            return parent::run($input, $output);
+        }
+
         $name = $this->getName();
 
         $this->lock = $this->lockFactory->createLock(
@@ -52,12 +74,12 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
                     $name
                 ));
 
-                return LockableCommandInterface::COMMAND_IS_LOCKED_ERROR_CODE;
+                return $this->getCommandIsLockedErrorCode();
             }
         } catch (LockExpiredException | LockConflictedException | LockAcquiringException $e) {
             $this->error($e, get_defined_vars());
 
-            return LockableCommandInterface::COMMAND_IS_LOCKED_ERROR_CODE;
+            return $this->getCommandIsLockedErrorCode();
         }
 
         try {
@@ -65,6 +87,23 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
         } finally {
             $this->lock->release();
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @throws InvalidArgumentException
+     */
+    protected function configure(): void
+    {
+        parent::configure();
+
+        $this->addOption(
+            $this->getDisableLockCommandOptionName(),
+            '',
+            InputOption::VALUE_NONE,
+            'Disable command locking'
+        );
     }
 
     /**
