@@ -41,6 +41,9 @@ return PhpCsFixer\Config::create()
         'strict_comparison' => true,
         'strict_param' => true,
         'combine_consecutive_unsets' => true,
+        'binary_operator_spaces' => [
+            'align_double_arrow' => true,
+        ],
     ])
     ->setFinder($finder)
 ;
