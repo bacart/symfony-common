@@ -29,7 +29,7 @@ To use the newest (maybe unstable) version add following into your composer.json
 
 Usage example
 -------------
-Use `AbstractLockableCommand` as parent class for your command.
+Use `AbstractLockableCommand` as parent class of your command.
 ```php
 use Bacart\SymfonyCommon\Command\AbstractLockableCommand;
 
@@ -54,7 +54,7 @@ class SomeService implements EventDispatcherAwareInterface
         ...
         
         // extend a command lock TTL
-        $this->dispatcher->dispatch(AbstractLockableCommand::LOCKABLE_COMMAND_REFRESH_EVENT_NAME);
+        $this->dispatcher->dispatch(LockableCommandInterface::LOCKABLE_COMMAND_REFRESH_EVENT_NAME);
         
         ...
     }
