@@ -49,7 +49,7 @@ trait LoggerAwareTrait
 
             $messageOrException = sprintf(
                 'Exception %s: "%s" at %s line %s',
-                \get_class($exception),
+                get_class($exception),
                 $exception->getMessage(),
                 $exception->getFile(),
                 $exception->getLine()
