@@ -11,11 +11,12 @@
 
 namespace Bacart\SymfonyCommon\Aware\Traits;
 
+use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 trait TranslatorAwareTrait
 {
-    /** @var TranslatorInterface */
+    /** @var Translator */
     protected $translator;
 
     /**
