@@ -11,7 +11,7 @@
 
 namespace Bacart\SymfonyCommon\Aware\Traits;
 
-use Symfony\Bundle\FrameworkBundle\Translation\Translator;
+use Symfony\Component\Translation\Translator;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 trait TranslatorAwareTrait
