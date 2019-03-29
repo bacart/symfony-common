@@ -14,6 +14,7 @@ namespace Bacart\SymfonyCommon\Aware\Traits;
 use Psr\Log\AbstractLogger;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
+use Throwable;
 
 trait LoggerAwareTrait
 {
@@ -33,9 +34,9 @@ trait LoggerAwareTrait
     /**
      * Logs with an arbitrary level.
      *
-     * @param string            $level
-     * @param \Throwable|string $messageOrException
-     * @param array             $context
+     * @param string           $level
+     * @param Throwable|string $messageOrException
+     * @param array            $context
      */
     public function log($level, $messageOrException, array $context = []): void
     {
@@ -43,13 +44,13 @@ trait LoggerAwareTrait
             return;
         }
 
-        if ($messageOrException instanceof \Throwable) {
+        if ($messageOrException instanceof Throwable) {
             $exception = $messageOrException;
             $variables = $context;
 
             $messageOrException = sprintf(
                 'Exception %s: "%s" at %s line %s',
-                \get_class($exception),
+                get_class($exception),
                 $exception->getMessage(),
                 $exception->getFile(),
                 $exception->getLine()
@@ -71,8 +72,8 @@ trait LoggerAwareTrait
     /**
      * System is unusable.
      *
-     * @param \Throwable|string $message
-     * @param array             $context
+     * @param Throwable|string $message
+     * @param array            $context
      */
     public function emergency($message, array $context = []): void
     {
@@ -85,8 +86,8 @@ trait LoggerAwareTrait
      * Example: Entire website down, database unavailable, etc. This should
      * trigger the SMS alerts and wake you up.
      *
-     * @param \Throwable|string $message
-     * @param array             $context
+     * @param Throwable|string $message
+     * @param array            $context
      */
     public function alert($message, array $context = []): void
     {
@@ -98,8 +99,8 @@ trait LoggerAwareTrait
      *
      * Example: Application component unavailable, unexpected exception.
      *
-     * @param \Throwable|string $message
-     * @param array             $context
+     * @param Throwable|string $message
+     * @param array            $context
      */
     public function critical($message, array $context = []): void
     {
@@ -110,8 +111,8 @@ trait LoggerAwareTrait
      * Runtime errors that do not require immediate action but should typically
      * be logged and monitored.
      *
-     * @param \Throwable|string $message
-     * @param array             $context
+     * @param Throwable|string $message
+     * @param array            $context
      */
     public function error($message, array $context = []): void
     {
@@ -124,8 +125,8 @@ trait LoggerAwareTrait
      * Example: Use of deprecated APIs, poor use of an API, undesirable things
      * that are not necessarily wrong.
      *
-     * @param \Throwable|string $message
-     * @param array             $context
+     * @param Throwable|string $message
+     * @param array            $context
      */
     public function warning($message, array $context = []): void
     {
@@ -135,8 +136,8 @@ trait LoggerAwareTrait
     /**
      * Normal but significant events.
      *
-     * @param \Throwable|string $message
-     * @param array             $context
+     * @param Throwable|string $message
+     * @param array            $context
      */
     public function notice($message, array $context = []): void
     {
@@ -148,8 +149,8 @@ trait LoggerAwareTrait
      *
      * Example: User logs in, SQL logs.
      *
-     * @param \Throwable|string $message
-     * @param array             $context
+     * @param Throwable|string $message
+     * @param array            $context
      */
     public function info($message, array $context = []): void
     {
@@ -159,8 +160,8 @@ trait LoggerAwareTrait
     /**
      * Detailed debug information.
      *
-     * @param \Throwable|string $message
-     * @param array             $context
+     * @param Throwable|string $message
+     * @param array            $context
      */
     public function debug($message, array $context = []): void
     {

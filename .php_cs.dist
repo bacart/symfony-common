@@ -19,7 +19,6 @@ return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony'                              => true,
-        '@Symfony:risky'                        => true,
         '@PHPUnit48Migration:risky'             => true,
         'array_syntax'                          => ['syntax' => 'short'],
         'binary_operator_spaces'                => ['align_double_arrow' => true],
