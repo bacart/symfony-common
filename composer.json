@@ -10,15 +10,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
-        "symfony/lock": "4.2.*",
-        "symfony/translation": "^4.2"
+        "symfony/lock": "^4.2",
+        "symfony/translation": "^4.2",
+        "symfony/validator": "^4.2"
     },
     "require-dev": {
         "doctrine/doctrine-bundle": "^1.10",
         "doctrine/mongodb-odm-bundle": "^3.5",
         "doctrine/orm": "^2.6",
         "phpstan/phpstan": "^0.11",
-        "symfony/framework-bundle": "4.2.*"
+        "symfony/framework-bundle": "^4.2"
     },
     "suggest": {
         "doctrine/mongodb-odm": "Doctrine MongoDB Object Document Mapper (ODM)",
