@@ -58,7 +58,9 @@ trait LoggerAwareTrait
                 $exception->getLine()
             );
 
-            if (false !== $exceptionIndex = array_search($exception, $variables, true)) {
+            $exceptionIndex = array_search($exception, $variables, true);
+
+            if (false !== $exceptionIndex) {
                 unset($variables[$exceptionIndex]);
             }
 
