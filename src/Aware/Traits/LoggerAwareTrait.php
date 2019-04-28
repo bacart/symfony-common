@@ -20,7 +20,7 @@ use Throwable;
 
 trait LoggerAwareTrait
 {
-    /** @var AbstractLogger|null */
+    /** @var AbstractLogger|LoggerInterface|null */
     protected $logger;
 
     /**

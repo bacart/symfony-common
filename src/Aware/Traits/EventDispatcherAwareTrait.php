@@ -18,7 +18,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 trait EventDispatcherAwareTrait
 {
-    /** @var EventDispatcher */
+    /** @var EventDispatcher|EventDispatcherInterface */
     protected $dispatcher;
 
     /**
