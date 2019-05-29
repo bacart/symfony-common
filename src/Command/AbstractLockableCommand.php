@@ -73,17 +73,11 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
 
         $name = $this->getName();
 
-        $this->lock = $this->lockFactory->createLock(
-            sprintf('command_lock|%s', $name),
-            $this->getLockTtl()
-        );
+        $this->lock = $this->lockFactory->createLock(sprintf('command_lock|%s', $name), $this->getLockTtl());
 
         try {
             if (!$this->lock->acquire()) {
-                $this->warning(sprintf(
-                    'The command "%s" is already running',
-                    $name
-                ));
+                $this->warning(sprintf('The command "%s" is already running', $name));
 
                 return $this->getCommandIsLockedErrorCode();
             }
@@ -127,10 +121,7 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
         $this->dispatcher->addListener(
             LockableCommandInterface::LOCKABLE_COMMAND_REFRESH_EVENT_NAME,
             function (): void {
-                $this->debug(sprintf(
-                    'Command "%s" received lock refresh event',
-                    $this->getName()
-                ));
+                $this->debug(sprintf('Command "%s" received lock refresh event', $this->getName()));
 
                 try {
                     $this->lock->refresh();

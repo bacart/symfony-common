@@ -44,10 +44,7 @@ abstract class AbstractServiceDocumentRepository extends ServiceDocumentReposito
             foreach ($allMetadata as $metadata) {
                 $reflectionClass = $metadata->getReflectionClass();
 
-                $repositoryClass = $this->getDocumentRepository(
-                    $reflectionClass,
-                    $annotationReader
-                );
+                $repositoryClass = $this->getDocumentRepository($reflectionClass, $annotationReader);
 
                 if (static::class === $repositoryClass) {
                     parent::__construct($registry, $reflectionClass->getName());

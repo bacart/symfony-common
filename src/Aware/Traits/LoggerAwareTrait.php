@@ -36,7 +36,7 @@ trait LoggerAwareTrait
     /**
      * Logs with an arbitrary level.
      *
-     * @param string           $level
+     * @param mixed            $level
      * @param Throwable|string $messageOrException
      * @param array            $context
      */
@@ -87,8 +87,7 @@ trait LoggerAwareTrait
     /**
      * Action must be taken immediately.
      *
-     * Example: Entire website down, database unavailable, etc. This should
-     * trigger the SMS alerts and wake you up.
+     * Example: Entire website down, database unavailable, etc. This should trigger the SMS alerts and wake you up.
      *
      * @param Throwable|string $message
      * @param array            $context
@@ -112,8 +111,7 @@ trait LoggerAwareTrait
     }
 
     /**
-     * Runtime errors that do not require immediate action but should typically
-     * be logged and monitored.
+     * Runtime errors that do not require immediate action but should typically be logged and monitored.
      *
      * @param Throwable|string $message
      * @param array            $context
@@ -126,8 +124,7 @@ trait LoggerAwareTrait
     /**
      * Exceptional occurrences that are not errors.
      *
-     * Example: Use of deprecated APIs, poor use of an API, undesirable things
-     * that are not necessarily wrong.
+     * Example: Use of deprecated APIs, poor use of an API, undesirable things that are not necessarily wrong.
      *
      * @param Throwable|string $message
      * @param array            $context

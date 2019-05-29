@@ -21,6 +21,7 @@
         "friendsofphp/php-cs-fixer": "^2.14",
         "symfony/security-core": "^4.2",
         "phpstan/phpstan": "^0.11",
+        "rector/rector": "^0.4",
         "symfony/framework-bundle": "^4.2"
     },
     "suggest": {
@@ -28,6 +29,7 @@
         "doctrine/orm": "Doctrine 2 Object Relational Mapper (ORM)",
         "friendsofphp/php-cs-fixer": "A tool to automatically fix PHP Coding Standards issues",
         "phpstan/phpstan": "PHPStan - PHP Static Analysis Tool",
+        "rector/rector": "Instant upgrade and refactoring of your PHP code",
         "symfony/framework-bundle": "The FrameworkBundle defines the main framework configuration, from sessions and translations to forms, validation, routing and more.",
         "symfony/lock": "Creates and manages locks, a mechanism to provide exclusive access to a shared resource."
     },

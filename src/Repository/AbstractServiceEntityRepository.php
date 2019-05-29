@@ -44,10 +44,7 @@ abstract class AbstractServiceEntityRepository extends ServiceEntityRepository
             foreach ($allMetadata as $metadata) {
                 $reflectionClass = $metadata->getReflectionClass();
 
-                $repositoryClass = $this->getEntityRepository(
-                    $reflectionClass,
-                    $annotationReader
-                );
+                $repositoryClass = $this->getEntityRepository($reflectionClass, $annotationReader);
 
                 if (static::class === $repositoryClass) {
                     parent::__construct($registry, $reflectionClass->getName());
