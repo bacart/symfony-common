@@ -24,7 +24,8 @@
         "symfony/security-core": "^4.3",
         "phpstan/phpstan": "^0.11",
         "rector/rector": "^0.4",
-        "symfony/framework-bundle": "^4.3"
+        "symfony/framework-bundle": "^4.3",
+        "symfony/messenger": "^4.3"
     },
     "suggest": {
         "doctrine/mongodb-odm": "Doctrine MongoDB Object Document Mapper (ODM)",
@@ -34,6 +35,7 @@
         "phpstan/phpstan": "PHPStan - PHP Static Analysis Tool",
         "rector/rector": "Instant upgrade and refactoring of your PHP code",
         "symfony/framework-bundle": "The FrameworkBundle defines the main framework configuration, from sessions and translations to forms, validation, routing and more.",
+        "symfony/messenger": "The Messenger component helps application send and receive messages to/from other applications or via message queues.",
         "symfony/lock": "Creates and manages locks, a mechanism to provide exclusive access to a shared resource."
     },
     "config": {
