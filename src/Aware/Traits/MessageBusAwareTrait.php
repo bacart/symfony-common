@@ -25,7 +25,7 @@ trait MessageBusAwareTrait
      *
      * @param MessageBusInterface $bus
      */
-    public function setBus(MessageBusInterface $bus): void
+    public function setMessageBusBus(MessageBusInterface $bus): void
     {
         $this->bus = $bus;
     }

@@ -20,5 +20,5 @@ interface MessageBusAwareInterface
     /**
      * @param MessageBusInterface $bus
      */
-    public function setCache(MessageBusInterface $bus): void;
+    public function setMessageBusBus(MessageBusInterface $bus): void;
 }
