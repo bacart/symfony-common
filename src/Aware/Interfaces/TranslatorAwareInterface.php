@@ -17,8 +17,5 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 interface TranslatorAwareInterface
 {
-    /**
-     * @param TranslatorInterface $translator
-     */
     public function setTranslator(TranslatorInterface $translator): void;
 }

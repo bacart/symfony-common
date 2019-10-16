@@ -17,8 +17,5 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 
 interface ManagerRegistryAwareInterface
 {
-    /**
-     * @param ManagerRegistry $managerRegistry
-     */
     public function setManagerRegistry(ManagerRegistry $managerRegistry): void;
 }

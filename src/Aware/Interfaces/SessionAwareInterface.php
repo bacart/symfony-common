@@ -17,8 +17,5 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 interface SessionAwareInterface
 {
-    /**
-     * @param SessionInterface|null $session
-     */
-    public function setSession(SessionInterface $session = null): void;
+    public function setSession(?SessionInterface $session): void;
 }

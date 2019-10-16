@@ -26,7 +26,7 @@ trait SessionAwareTrait
      *
      * @param SessionInterface|null $session
      */
-    public function setSession(SessionInterface $session = null): void
+    public function setSession(?SessionInterface $session): void
     {
         $this->session = $session;
     }

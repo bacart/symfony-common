@@ -19,7 +19,7 @@ use Symfony\Contracts\Cache\CacheInterface;
 
 trait CacheAwareTrait
 {
-    /** @var CacheInterface|CacheItemPoolInterface|TagAwareAdapterInterface */
+    /** @var CacheItemPoolInterface|TagAwareAdapterInterface|CacheInterface */
     protected $cache;
 
     /**

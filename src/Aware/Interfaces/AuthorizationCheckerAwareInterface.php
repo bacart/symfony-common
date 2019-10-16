@@ -17,8 +17,5 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 interface AuthorizationCheckerAwareInterface
 {
-    /**
-     * @param AuthorizationCheckerInterface $authorizationChecker
-     */
     public function setAuthorizationChecker(AuthorizationCheckerInterface $authorizationChecker): void;
 }

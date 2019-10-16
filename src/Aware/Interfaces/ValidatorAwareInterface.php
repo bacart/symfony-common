@@ -17,8 +17,5 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 interface ValidatorAwareInterface
 {
-    /**
-     * @param ValidatorInterface $validator
-     */
     public function setValidator(ValidatorInterface $validator): void;
 }

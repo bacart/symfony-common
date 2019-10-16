@@ -17,8 +17,5 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 interface MessageBusAwareInterface
 {
-    /**
-     * @param MessageBusInterface $bus
-     */
     public function setMessageBusBus(MessageBusInterface $bus): void;
 }
