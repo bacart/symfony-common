@@ -15,17 +15,16 @@ namespace Bacart\SymfonyCommon\Aware\Traits;
 
 use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\Adapter\TagAwareAdapterInterface;
-use Symfony\Contracts\Cache\CacheInterface;
 
 trait CacheAwareTrait
 {
-    /** @var CacheItemPoolInterface|TagAwareAdapterInterface|CacheInterface */
+    /** @var CacheItemPoolInterface|TagAwareAdapterInterface */
     protected $cache;
 
     /**
      * @required
      *
-     * @param CacheItemPoolInterface $cache
+     * @param CacheItemPoolInterface|TagAwareAdapterInterface $cache
      */
     public function setCache(CacheItemPoolInterface $cache): void
     {
