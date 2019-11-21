@@ -13,19 +13,19 @@ declare(strict_types=1);
 
 namespace Bacart\SymfonyCommon\Aware\Traits;
 
-use Symfony\Component\Lock\Factory;
+use Symfony\Component\Lock\LockFactory;
 
 trait LockFactoryAwareTrait
 {
-    /** @var Factory */
+    /** @var LockFactory */
     protected $lockFactory;
 
     /**
      * @required
      *
-     * @param Factory $lockFactory
+     * @param LockFactory $lockFactory
      */
-    public function setLockFactory(Factory $lockFactory): void
+    public function setLockFactory(LockFactory $lockFactory): void
     {
         $this->lockFactory = $lockFactory;
     }

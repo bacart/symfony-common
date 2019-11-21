@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Bacart\SymfonyCommon\Aware\Interfaces;
 
-use Symfony\Component\Lock\Factory;
+use Symfony\Component\Lock\LockFactory;
 
 interface LockFactoryAwareInterface
 {
-    public function setLockFactory(Factory $lockFactory): void;
+    public function setLockFactory(LockFactory $lockFactory): void;
 }
