@@ -15,9 +15,10 @@
         "symfony/validator": "^5.0"
     },
     "require-dev": {
-        "symfony/security-core": "^5.0",
         "symfony/framework-bundle": "^5.0",
-        "symfony/messenger": "^5.0"
+        "symfony/messenger": "^5.0",
+        "symfony/security-core": "^5.0",
+        "symfony/security-csrf": "^5.0"
     },
     "suggest": {
         "doctrine/mongodb-odm": "Doctrine MongoDB Object Document Mapper (ODM)",
