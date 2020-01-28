@@ -13,9 +13,6 @@ declare(strict_types=1);
 
 namespace Bacart\SymfonyCommon\Command;
 
-use Bacart\SymfonyCommon\Aware\Interfaces\EventDispatcherAwareInterface;
-use Bacart\SymfonyCommon\Aware\Interfaces\LockFactoryAwareInterface;
-use Bacart\SymfonyCommon\Aware\Interfaces\LoggerAwareInterface;
 use Bacart\SymfonyCommon\Aware\Traits\EventDispatcherAwareTrait;
 use Bacart\SymfonyCommon\Aware\Traits\LockFactoryAwareTrait;
 use Bacart\SymfonyCommon\Aware\Traits\LoggerAwareTrait;
@@ -27,15 +24,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Lock\Exception\LockAcquiringException;
 use Symfony\Component\Lock\Exception\LockConflictedException;
 use Symfony\Component\Lock\Exception\LockExpiredException;
-use Symfony\Component\Lock\Lock;
+use Symfony\Component\Lock\LockInterface;
 
-abstract class AbstractLockableCommand extends Command implements LockableCommandInterface, EventDispatcherAwareInterface, LockFactoryAwareInterface, LoggerAwareInterface
+abstract class AbstractLockableCommand extends Command
 {
     use EventDispatcherAwareTrait;
     use LockFactoryAwareTrait;
     use LoggerAwareTrait;
 
-    /** @var Lock */
+    /** @var LockInterface */
     protected $lock;
 
     /**
@@ -57,7 +54,7 @@ abstract class AbstractLockableCommand extends Command implements LockableComman
     /**
      * {@inheritdoc}
      */
-    public function getLockTtl(): int
+    public function getLockTtl(): float
     {
         return LockableCommandInterface::DEFAULT_TTL;
     }

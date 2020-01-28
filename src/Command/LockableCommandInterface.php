@@ -21,18 +21,9 @@ interface LockableCommandInterface
     public const COMMAND_IS_LOCKED_ERROR_CODE = 100;
     public const DEFAULT_TTL                  = 60;
 
-    /**
-     * @return string
-     */
     public function getDisableLockCommandOptionName(): string;
 
-    /**
-     * @return int
-     */
     public function getCommandIsLockedErrorCode(): int;
 
-    /**
-     * @return int
-     */
     public function getLockTtl(): int;
 }

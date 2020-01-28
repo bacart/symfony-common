@@ -22,8 +22,6 @@ trait ReaderAwareTrait
 
     /**
      * @required
-     *
-     * @param Reader $reader
      */
     public function setReader(Reader $reader): void
     {

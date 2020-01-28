@@ -23,8 +23,6 @@ trait TranslatorAwareTrait
 
     /**
      * @required
-     *
-     * @param TranslatorInterface $translator
      */
     public function setTranslator(TranslatorInterface $translator): void
     {

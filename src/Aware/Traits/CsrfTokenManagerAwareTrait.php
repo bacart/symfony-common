@@ -22,8 +22,6 @@ trait CsrfTokenManagerAwareTrait
 
     /**
      * @required
-     *
-     * @param CsrfTokenManagerInterface $csrfTokenManager
      */
     public function setCsrfTokenManager(CsrfTokenManagerInterface $csrfTokenManager): void
     {

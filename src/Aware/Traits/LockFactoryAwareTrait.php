@@ -22,8 +22,6 @@ trait LockFactoryAwareTrait
 
     /**
      * @required
-     *
-     * @param LockFactory $lockFactory
      */
     public function setLockFactory(LockFactory $lockFactory): void
     {

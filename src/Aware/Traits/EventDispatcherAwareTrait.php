@@ -23,8 +23,6 @@ trait EventDispatcherAwareTrait
 
     /**
      * @required
-     *
-     * @param EventDispatcherInterface $dispatcher
      */
     public function setEventDispatcher(EventDispatcherInterface $dispatcher): void
     {

@@ -18,15 +18,13 @@ use Symfony\Component\Messenger\MessageBusInterface;
 trait MessageBusAwareTrait
 {
     /** @var MessageBusInterface */
-    protected $bus;
+    protected $messageBus;
 
     /**
      * @required
-     *
-     * @param MessageBusInterface $bus
      */
-    public function setMessageBusBus(MessageBusInterface $bus): void
+    public function setMessageBusBus(MessageBusInterface $messageBus): void
     {
-        $this->bus = $bus;
+        $this->messageBus = $messageBus;
     }
 }

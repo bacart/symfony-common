@@ -54,18 +54,9 @@ abstract class AbstractServiceEntityRepository extends ServiceEntityRepository
             }
         }
 
-        throw new LogicException(sprintf(
-            'Could not find the entity class for repository "%s"',
-            static::class
-        ));
+        throw new LogicException(sprintf('Could not find the entity class for repository "%s"', static::class));
     }
 
-    /**
-     * @param ReflectionClass  $reflectionClass
-     * @param AnnotationReader $annotationReader
-     *
-     * @return string|null
-     */
     protected function getEntityRepository(
         ReflectionClass $reflectionClass,
         AnnotationReader $annotationReader

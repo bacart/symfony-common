@@ -24,8 +24,6 @@ trait ManagerRegistryAwareTrait
 
     /**
      * @required
-     *
-     * @param ManagerRegistry $managerRegistry
      */
     public function setManagerRegistry(ManagerRegistry $managerRegistry): void
     {

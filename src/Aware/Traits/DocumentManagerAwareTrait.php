@@ -22,8 +22,6 @@ trait DocumentManagerAwareTrait
 
     /**
      * @required
-     *
-     * @param DocumentManager $documentManager
      */
     public function setDocumentManager(DocumentManager $documentManager): void
     {

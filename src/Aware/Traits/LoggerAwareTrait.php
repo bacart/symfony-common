@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Bacart\SymfonyCommon\Aware\Traits;
 
 use Psr\Log\AbstractLogger;
+use Psr\Log\InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use Throwable;
@@ -26,7 +27,7 @@ trait LoggerAwareTrait
     /**
      * @required
      *
-     * @param LoggerInterface|null $logger
+     * @param ?LoggerInterface $logger
      */
     public function setLogger(?LoggerInterface $logger): void
     {
@@ -38,7 +39,8 @@ trait LoggerAwareTrait
      *
      * @param mixed            $level
      * @param Throwable|string $messageOrException
-     * @param array            $context
+     *
+     * @throws InvalidArgumentException
      */
     public function log($level, $messageOrException, array $context = []): void
     {
@@ -77,7 +79,8 @@ trait LoggerAwareTrait
      * System is unusable.
      *
      * @param Throwable|string $message
-     * @param array            $context
+     *
+     * @throws InvalidArgumentException
      */
     public function emergency($message, array $context = []): void
     {
@@ -90,7 +93,8 @@ trait LoggerAwareTrait
      * Example: Entire website down, database unavailable, etc. This should trigger the SMS alerts and wake you up.
      *
      * @param Throwable|string $message
-     * @param array            $context
+     *
+     * @throws InvalidArgumentException
      */
     public function alert($message, array $context = []): void
     {
@@ -103,7 +107,8 @@ trait LoggerAwareTrait
      * Example: Application component unavailable, unexpected exception.
      *
      * @param Throwable|string $message
-     * @param array            $context
+     *
+     * @throws InvalidArgumentException
      */
     public function critical($message, array $context = []): void
     {
@@ -114,7 +119,8 @@ trait LoggerAwareTrait
      * Runtime errors that do not require immediate action but should typically be logged and monitored.
      *
      * @param Throwable|string $message
-     * @param array            $context
+     *
+     * @throws InvalidArgumentException
      */
     public function error($message, array $context = []): void
     {
@@ -127,7 +133,8 @@ trait LoggerAwareTrait
      * Example: Use of deprecated APIs, poor use of an API, undesirable things that are not necessarily wrong.
      *
      * @param Throwable|string $message
-     * @param array            $context
+     *
+     * @throws InvalidArgumentException
      */
     public function warning($message, array $context = []): void
     {
@@ -138,7 +145,8 @@ trait LoggerAwareTrait
      * Normal but significant events.
      *
      * @param Throwable|string $message
-     * @param array            $context
+     *
+     * @throws InvalidArgumentException
      */
     public function notice($message, array $context = []): void
     {
@@ -151,7 +159,8 @@ trait LoggerAwareTrait
      * Example: User logs in, SQL logs.
      *
      * @param Throwable|string $message
-     * @param array            $context
+     *
+     * @throws InvalidArgumentException
      */
     public function info($message, array $context = []): void
     {
@@ -162,7 +171,8 @@ trait LoggerAwareTrait
      * Detailed debug information.
      *
      * @param Throwable|string $message
-     * @param array            $context
+     *
+     * @throws InvalidArgumentException
      */
     public function debug($message, array $context = []): void
     {

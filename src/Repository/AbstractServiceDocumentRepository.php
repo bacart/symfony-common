@@ -54,18 +54,9 @@ abstract class AbstractServiceDocumentRepository extends ServiceDocumentReposito
             }
         }
 
-        throw new LogicException(sprintf(
-            'Could not find the document class for repository "%s"',
-            static::class
-        ));
+        throw new LogicException(sprintf('Could not find the document class for repository "%s"', static::class));
     }
 
-    /**
-     * @param ReflectionClass  $reflectionClass
-     * @param AnnotationReader $annotationReader
-     *
-     * @return string|null
-     */
     protected function getDocumentRepository(
         ReflectionClass $reflectionClass,
         AnnotationReader $annotationReader

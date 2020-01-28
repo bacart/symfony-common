@@ -22,8 +22,6 @@ trait AuthenticationUtilsAwareTrait
 
     /**
      * @required
-     *
-     * @param AuthenticationUtils $authenticationUtils
      */
     public function setAuthenticationUtils(AuthenticationUtils $authenticationUtils): void
     {

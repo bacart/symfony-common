@@ -23,8 +23,6 @@ trait ParameterBagAwareTrait
 
     /**
      * @required
-     *
-     * @param ParameterBagInterface $parameterBag
      */
     public function setParameterBag(ParameterBagInterface $parameterBag): void
     {

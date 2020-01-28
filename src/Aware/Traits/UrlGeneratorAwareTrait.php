@@ -22,8 +22,6 @@ trait UrlGeneratorAwareTrait
 
     /**
      * @required
-     *
-     * @param UrlGeneratorInterface $urlGenerator
      */
     public function setUrlGenerator(UrlGeneratorInterface $urlGenerator): void
     {

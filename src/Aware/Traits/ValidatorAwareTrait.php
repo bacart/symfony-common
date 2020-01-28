@@ -22,8 +22,6 @@ trait ValidatorAwareTrait
 
     /**
      * @required
-     *
-     * @param ValidatorInterface $validator
      */
     public function setValidator(ValidatorInterface $validator): void
     {

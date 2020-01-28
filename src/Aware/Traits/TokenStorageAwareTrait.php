@@ -22,8 +22,6 @@ trait TokenStorageAwareTrait
 
     /**
      * @required
-     *
-     * @param TokenStorageInterface $tokenStorage
      */
     public function setTokenStorage(TokenStorageInterface $tokenStorage): void
     {

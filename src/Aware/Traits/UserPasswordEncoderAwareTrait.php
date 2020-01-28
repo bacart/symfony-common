@@ -22,8 +22,6 @@ trait UserPasswordEncoderAwareTrait
 
     /**
      * @required
-     *
-     * @param UserPasswordEncoderInterface $userPasswordEncoder
      */
     public function setUserPasswordEncoder(UserPasswordEncoderInterface $userPasswordEncoder): void
     {

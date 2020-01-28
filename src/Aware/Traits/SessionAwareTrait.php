@@ -23,8 +23,6 @@ trait SessionAwareTrait
 
     /**
      * @required
-     *
-     * @param SessionInterface|null $session
      */
     public function setSession(?SessionInterface $session): void
     {

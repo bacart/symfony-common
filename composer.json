@@ -9,23 +9,28 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2.5",
-        "symfony/lock": "^5.0",
-        "symfony/translation": "^5.0",
-        "symfony/validator": "^5.0"
+        "php": "^7.3"
     },
     "require-dev": {
+        "doctrine/doctrine-bundle": "^2.0",
+        "doctrine/mongodb-odm-bundle": "^4.1",
+        "doctrine/orm": "^2.7",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpstan/phpstan": "^0.12",
+        "rector/rector": "^0.6",
         "symfony/framework-bundle": "^5.0",
+        "symfony/lock": "^5.0",
         "symfony/messenger": "^5.0",
         "symfony/security-core": "^5.0",
         "symfony/security-csrf": "^5.0",
-        "symfony/security-http": "^5.0"
+        "symfony/security-http": "^5.0",
+        "symfony/translation": "^5.0",
+        "symfony/validator": "^5.0"
     },
     "suggest": {
         "doctrine/mongodb-odm": "Doctrine MongoDB Object Document Mapper (ODM)",
         "doctrine/orm": "Doctrine 2 Object Relational Mapper (ORM)",
         "friendsofphp/php-cs-fixer": "A tool to automatically fix PHP Coding Standards issues",
-        "jakub-onderka/php-parallel-lint": "This tool check syntax of PHP files faster than serial check with fancier output",
         "phpstan/phpstan": "PHPStan - PHP Static Analysis Tool",
         "rector/rector": "Instant upgrade and refactoring of your PHP code",
         "symfony/framework-bundle": "The FrameworkBundle defines the main framework configuration, from sessions and translations to forms, validation, routing and more.",
